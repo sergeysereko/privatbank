@@ -35,21 +35,22 @@ class ExchangedAmount
         if ($this->from == 'UAH'){
             //Если конвертируем гривну в другую валюту
             $rate = $this->getRate($this->to, 'sale');
-            return $rate ? round($this->amount/$rate,2):null;
+             if($rate){
+                return round($this->amount/$rate,2);
+             } else{
+                 return null;
+             }
         }else if($this->to == 'UAH'){
             //Если конвертации гривны из другой валюты
             $rate = $this->getRate($this->from, 'buy');
-            return $rate ? round($this->amount * $rate, 2):null;
-        }else{
-            //конвертация других валют
-            $toUah = $this->getRate($this->from, 'buy');
-            $fromUah = $this->getRate($this->to, 'sale');
-
-            if ($toUah && $fromUah){
-                return round(($this->amount * $toUah) / $fromUah, 2);
+            if($rate ){
+                return round($this->amount * $rate, 2);
+                }else
+            {
+                return null;
             }
-            return null;
-        }
+       }
+
     }
 
 }

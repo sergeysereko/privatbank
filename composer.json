@@ -4,10 +4,13 @@
   "type": "library",
   "autoload": {
     "psr-4": {
-      "Sergeysereko\\PrivatBankLib\\": "src/"
+      "PrivatBankLib\\": "src/"
     }
   },
   "require": {
     "php": ">=7.4"
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "MIT"
 }
